@@ -10,11 +10,11 @@ file_path = os.getcwd() + '\logo.json'
 with open(file_path, "r") as file:
     url = json.load(file)
 
-st.title("VCHS WildfireQuest")
+#st.title("VCHS WildfireQuest")
 
 st_lottie(url,
           reverse=True,
-          height=200,
+          height=400,
           width=400,
           speed=1,
           loop=True,
