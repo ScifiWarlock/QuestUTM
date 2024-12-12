@@ -5,23 +5,35 @@ import json
 from streamlit_lottie import st_lottie
 import os
 
-file_path = os.getcwd() + '\logo.json'
+file_path = os.path.join(os.getcwd(), 'logo.json')
 
 with open(file_path, "r") as file:
     url = json.load(file)
 
-#st.title("VCHS WildfireQuest")
+st.markdown(
+    """
+    <style>
+    .lottie-container {
+        width: 400px; 
+        height: 800px; 
+        margin: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-st_lottie(url,
+
+st.markdown('<div class="lottie-container">', unsafe_allow_html=True)
+st_lottie(url, 
           reverse=True,
-          height=400,
-          width=400,
           speed=1,
           loop=True,
           quality='high',
           key='logo')
+st.markdown('</div>', unsafe_allow_html=True)
+
 
 table = requests.get("http://127.0.0.1:8000/table_send").json()
-
 wypt_df = pd.DataFrame(table)
 st.dataframe(wypt_df)
