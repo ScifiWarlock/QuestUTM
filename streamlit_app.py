@@ -66,3 +66,17 @@ table = requests.get("http://127.0.0.1:8000/table_send").json()
 
 wypt_df = pd.DataFrame(table)
 st.dataframe(wypt_df)
+
+# csv_download = wypt_df.to_csv().encode("utf-8")
+
+# st.download_button(
+#     label="Download data as CSV",
+#     data=csv_download,
+#     file_name="large_df.csv",
+#     mime="text/csv",
+# )
+
+if st.button(label="Refresh data", key="refresh"):
+    st.write("Press cmd+r lmaoo")
+
+#st.map(data=wypt_df.loc[:2], use_container_width=True)
