@@ -5,7 +5,7 @@ import json
 from streamlit_lottie import st_lottie
 import os
 
-file_path = os.getcwd() + '\Main Scene.json'
+file_path = os.getcwd() + '/Main Scene.json'
 
 with open(file_path, "r") as file:
     url = json.load(file)
