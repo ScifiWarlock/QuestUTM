@@ -14,8 +14,8 @@ with open(file_path, "r") as file:
 
 st_lottie(url,
           reverse=True,
-          height=900,
-          width=800,
+          height=850,
+          width=700,
           speed=1,
           loop=True,
           quality='high',
