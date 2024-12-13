@@ -14,6 +14,8 @@ np.object = object
 
 file_path = os.getcwd() + '/mainscene_6ac041e0.mp4'
 
+login = requests.get("http://127.0.0.1:8000/populate_admin")
+
 #with open(file_path, "r") as file:
     #url = json.load(file)
 
