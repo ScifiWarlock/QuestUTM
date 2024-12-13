@@ -14,7 +14,7 @@ np.object = object
 
 file_path = os.getcwd() + '/mainscene_6ac041e0.mp4'
 
-login = requests.get("http://127.0.0.1:8000/populate_admin")
+#login = requests.get("http://127.0.0.1:8000/populate_admin")
 
 #with open(file_path, "r") as file:
     #url = json.load(file)
@@ -31,12 +31,6 @@ login = requests.get("http://127.0.0.1:8000/populate_admin")
 #           key='logo')
 
 #st.video(file_path, format="video/mp4")
-
-file = open(r"mainscene_2cb7447e.gif", 'rb')
-contents = file.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file.close()
-st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="GIF" style="width:100%;max-width:800px">',unsafe_allow_html = True)
 
 # HTML to render the Lottie animation
 # lottie_html = f"""
@@ -69,12 +63,18 @@ table = requests.get("http://127.0.0.1:8000/table_send").json()
 wypt_df = pd.DataFrame(table)
 if len(wypt_df) == 0:
     file_error = open(r"Unknown.gif", 'rb')
+    contents = file_error.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_error.close()
+    st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="GIF" style="width:100%;max-width:800px">',unsafe_allow_html = True)
+elif len(wypt_df) > 0: 
+    file = open(r"mainscene_2cb7447e.gif", 'rb')
     contents = file.read()
     data_url = base64.b64encode(contents).decode("utf-8")
     file.close()
     st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="GIF" style="width:100%;max-width:800px">',unsafe_allow_html = True)
-elif len(wypt_df) > 0: 
     st.dataframe(wypt_df)
+    st.button(label="Refresh data", key="refresh")
 
 # csv_download = wypt_df.to_csv().encode("utf-8")
 
@@ -85,7 +85,5 @@ elif len(wypt_df) > 0:
 #     mime="text/csv",
 # )
 
-if st.button(label="Refresh data", key="refresh"):
-    st.write("Press cmd+r lmaoo")
 
 #st.map(data=wypt_df.loc[:2], use_container_width=True)
