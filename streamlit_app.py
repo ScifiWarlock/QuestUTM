@@ -67,6 +67,12 @@ st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="GIF" style="width
 table = requests.get("http://127.0.0.1:8000/table_send").json()
 
 wypt_df = pd.DataFrame(table)
+if len(wypt_df) == 0:
+    file_error = open(r".gif", 'rb')
+    contents = file.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file.close()
+    st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="GIF" style="width:100%;max-width:800px">',unsafe_allow_html = True)
 st.dataframe(wypt_df)
 
 # csv_download = wypt_df.to_csv().encode("utf-8")
