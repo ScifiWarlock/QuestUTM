@@ -58,7 +58,7 @@ file_path = os.getcwd() + '/mainscene_6ac041e0.mp4'
 #st.components.v1.html(lottie_html, height=850)
 
 
-table = requests.get("http://127.0.0.1:8000/table_send").json()
+table = requests.get("http://127.0.0.1:8200/table_send").json()
 
 wypt_df = pd.DataFrame(table)
 if len(wypt_df) == 0:
